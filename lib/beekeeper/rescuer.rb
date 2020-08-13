@@ -16,7 +16,7 @@ module Beekeeper
       def handle_error(error)
         log(error)
         response = ExceptionBlueprinter.render_as_hash error, view: :basic, request: request
-        render json: response, status: response["status"]
+        render json: response, status: response[:status]
       end
 
       def log(error)
