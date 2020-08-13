@@ -1,6 +1,6 @@
 require 'beekeeper/exception_blueprinter'
 class Beekeeper::Railtie
-  initializer 'beekeeper.exception_renderer' do |app|
+  initializer 'beekeeper.trap_api_exceptions' do |app|
     # Global exception handler. No need of any exception handling in the application code.
     app.middleware.insert_after(ActionDispatch::ShowExceptions, Beekeeper::TrapApiExceptions)
   end
