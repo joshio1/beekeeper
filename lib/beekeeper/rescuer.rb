@@ -5,12 +5,7 @@ module Beekeeper
 
     included do
       RESCUABLE_ERRORS = [
-        ::CustomErrors::InvalidRequest,
-        ::CustomErrors::Unauthorized,
-        ::CustomErrors::Forbidden,
-        ::CustomErrors::RecordNotFound,
-        ::CustomErrors::UnprocessableEntity,
-        ::CustomErrors::BadGateway,
+        ::Beekeeper::Error,
         ::BaseError,
         ::Apipie::Error,
         ::ActiveRecord::RecordInvalid
