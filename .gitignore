@@ -58,3 +58,4 @@ npm-debug.log
 *._app
 *.idea/
 doc/
+beekeeper-*.gem
