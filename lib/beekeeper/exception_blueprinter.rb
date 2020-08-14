@@ -19,7 +19,7 @@ module Beekeeper
     end
 
     def self.get_status exception, options
-      @status ||= exception.try(:status) || get_status_from_backtrace(exception, options)
+      exception.try(:status) || get_status_from_backtrace(exception, options)
     end
 
     def self.get_error exception, options
