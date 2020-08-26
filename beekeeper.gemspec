@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.authors     = [""]
   spec.authors     = ["Omkar Joshi"]
   spec.email       = ["onjoshi@ncsu.edu"]
-  spec.homepage    = "https://github.com/josho1/beekeeper"
+  spec.homepage    = "https://github.com/joshio1/beekeeper"
   spec.summary     = "Beekeeper: Error logging, processing and rendering."
   spec.description = "Beekeepeer: This gem is responsible for error logging, processing and rendering of errors in a standard JSON format.."
   spec.license     = "MIT"
