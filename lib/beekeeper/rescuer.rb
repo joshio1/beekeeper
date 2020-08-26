@@ -6,7 +6,6 @@ module Beekeeper
     included do
       RESCUABLE_ERRORS = [
         ::Beekeeper::Error,
-        ::BaseError,
         ::Apipie::Error,
         ::ActiveRecord::RecordInvalid
       ]
