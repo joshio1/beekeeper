@@ -30,16 +30,54 @@ $ gem install beekeeper
 
 * Include `Beekeeper::Rescuer` in your application controller so that known errors are logged and response is returned in a standard JSON format.
     * These are the `known errors` it rescues:
-        * `CustomErrors`
-        * `BaseError`
+        * `Beekeeper::Error`
         * `ActiveRecord::RecordInvalid` (Validation errors)
         * `ActiveRecord::RecordNotFound`
         
+* In order to define and raise known errors in your application, it is recommended that you subclass Beekeeper::Error
+
+For example:
+```ruby
+class CustomError < Beekeeper::Error
+end
+
+class CustomErrors::BadRequest < CustomError
+  def initialize(message = "Request params are invalid")
+    super(error: :bad_request, status: 400, message: message)
+  end
+end
+
+
+class UsersController
+  def edit
+    raise CustomErrors::BadRequest, message: "User not found" if params[:id].blank?
+  end
+end
+
+
+```
+        
 * This library also inserts a `TrapApiExceptions` middleware in your Rails application stack which traps errors from an API route (`/api`) and returns a standard JSON error response by default. (Without this middleware, an HTML response is returned)
 
-## Usage
+* This gem also provides standard logging for an exception message. For eg. sometimes, you would like to rescue the exception and just log the exception in the application code itself.
 
-* Define `CustomErrors` in this gem and let other Rails apps inherit or use this in their apps.
+```ruby
+
+class BackgroundTaskWorker < Worker
+
+    def perform
+      begin
+        #Code Body
+      rescue e => StandardError
+        Beekeeper::Logger.fatal(e)
+      end
+    end
+
+end
+
+```
+
+Above Beekeeper::Logger will print the error message, error class along with a trimmed version of the backtrace.
 
 ## Contributing
 Contribution directions go here.
