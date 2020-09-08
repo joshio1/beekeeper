@@ -27,5 +27,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "blueprinter", "~> 0.23.4"
   spec.add_development_dependency "oj", "~> 3.10.6"
 
-  # spec.add_development_dependency "sqlite3"
+  spec.add_development_dependency "sqlite3"
 end
