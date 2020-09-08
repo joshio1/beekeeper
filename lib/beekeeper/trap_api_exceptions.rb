@@ -16,11 +16,11 @@ module Beekeeper
       request = ActionDispatch::Request.new env
       @app.call(env)
     rescue StandardError => e
-      if request.path_info.include? '/api'
+      # if request.path_info.include? '/api'
         render_json_error(request, e)
-      else
-        raise e
-      end
+      # else
+      #   raise e
+      # end
     end
 
     private
