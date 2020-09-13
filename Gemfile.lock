@@ -1,7 +1,10 @@
 PATH
   remote: .
   specs:
-    beekeeper (0.1.9)
+    beekeeper (0.1.10)
+      apipie-rails
+      blueprinter (~> 0.23.4)
+      oj (~> 3.10.6)
       rails (>= 5.1.4)
 
 GEM
@@ -146,8 +149,6 @@ PLATFORMS
 DEPENDENCIES
   apipie-rails
   beekeeper!
-  blueprinter (~> 0.23.4)
-  oj (~> 3.10.6)
   pry
   sqlite3
 
