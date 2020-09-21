@@ -1,21 +1,21 @@
 module Beekeeper
   class Logger
-    def self.fatal(error)
+    def self.fatal(error, logger: nil)
       message = if error.respond_to? :backtrace
                   message_with_backtrace(error)
                 else
                   error
                 end
-      Rails.logger.fatal message
+      internal_logger(logger).fatal message
     end
 
-    def self.error(error)
+    def self.error(error, logger: nil)
       message = if error.respond_to? :backtrace
                   message_with_backtrace(error)
                 else
                   error
                 end
-      Rails.logger.error message
+      internal_logger(logger).error message
     end
 
     private
@@ -30,6 +30,10 @@ module Beekeeper
       bc.add_filter   { |line| line.gsub(Rails.root.to_s, '') } # strip the Rails.root prefix
       bc.add_silencer { |line| line =~ /puma|rubygems|vendor|bin/ } # skip any lines from puma or rubygems
       bc.clean(backtrace).map! { |t| "  #{t}\n" }
+    end
+
+    def internal_logger(logger)
+      logger || Rails.logger
     end
 
   end

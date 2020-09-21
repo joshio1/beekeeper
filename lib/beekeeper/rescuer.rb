@@ -7,7 +7,10 @@ module Beekeeper
       RESCUABLE_ERRORS = [
         ::Beekeeper::Error,
         ::Apipie::Error,
-        ::ActiveRecord::RecordInvalid
+        ::ActiveRecord::RecordInvalid,
+        ::ActiveRecord::RecordNotUnique,
+        ::ActiveRecord::RecordNotFound,
+        ::ActiveRecord::ActiveRecordError,
       ]
 
       rescue_from(*RESCUABLE_ERRORS, with: :handle_error)
