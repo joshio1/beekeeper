@@ -32,7 +32,7 @@ module Beekeeper
       bc.clean(backtrace).map! { |t| "  #{t}\n" }
     end
 
-    def internal_logger(logger)
+    def self.internal_logger(logger)
       logger || Rails.logger
     end
 
